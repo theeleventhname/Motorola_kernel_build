@@ -47,6 +47,7 @@ jobs:
                                   CROSS_COMPILE=$GITHUB_WORKSPACE/aarch64-linux-android-4.9/bin/aarch64-linux-android- \
                                   CROSS_COMPILE_ARM32=$GITHUB_WORKSPACE/arm-linux-androideabi-4.9/bin/arm-linux-androideabi- "
           cd kernel-source
+          cp arch/arm64/configs/vendor/ext_config/nio-default.config arch/arm64/configs/nio_defconfig
           clang -v
           make ${args} ${{ env.KERNEL_CONFIG }}
           make -j$(nproc --all) ${args}
